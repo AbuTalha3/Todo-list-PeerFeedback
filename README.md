@@ -21,7 +21,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Todo list Project <a name="about-project"></a>
+# 📖 Todo list Project peer feedback <a name="about-project"></a>
 
 Todo list project, where you can add you daily chores and commitments, and remove them as you are done with them. It allows you to edit your tasks,The app is developed using Html, CSS and Javascript
 
