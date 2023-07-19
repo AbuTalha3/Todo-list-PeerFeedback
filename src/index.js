@@ -32,20 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function renderTodoItem(todoItem) {
-    let todoItemContainer; let checkbox; let todoText; let deleteButton; let deleteIcon; let hr; let todoItemId;
-    let todoItemId = `todo-item-${todoItem.index}`;
-    todoItemContainer = document.createElement('div');
+    const todoItemId = `todo-item-${todoItem.index}`;
+    const todoItemContainer = document.createElement('div');
     todoItemContainer.classList.add('todo-item-container');
     todoItemContainer.id = todoItemId;
     todosContainer.appendChild(todoItemContainer);
 
-    checkbox = document.createElement('input');
+    const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = 'todo-checkbox';
     checkbox.checked = todoItem.completed;
     todoItemContainer.prepend(checkbox);
 
-    todoText = document.createElement('p');
+    const todoText = document.createElement('p');
     todoText.id = 'todo-text';
     todoText.innerText = todoItem.text;
     todoItemContainer.appendChild(todoText);
@@ -61,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
       saveTodosToLocalStorage();
     });
 
-    deleteButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
     deleteButton.id = 'delete-button';
-    deleteIcon = document.createElement('i');
+    const deleteIcon = document.createElement('i');
     deleteIcon.classList.add('fas', 'fa-trash');
     deleteButton.appendChild(deleteIcon);
     todoItemContainer.appendChild(deleteButton);
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       saveTodosToLocalStorage();
     });
 
-    hr = document.createElement('hr');
+    const hr = document.createElement('hr');
     hr.id = `${todoItemId}-hr`;
     todosContainer.appendChild(hr);
   }
