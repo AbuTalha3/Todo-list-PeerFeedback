@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import './style.css';
-import { updateStatus, clearCompleted } from '../modules/todosStatus.js';
+import { updateStatus, clearCompleted } from '../modules/todosstatus.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const textInputField = document.querySelector('#text-input-field');
@@ -32,48 +32,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function renderTodoItem(todoItem) {
-    const todoItemContainer = document.createElement('div');
-    todoItemContainer.classList.add('todo-item-container');
+    let todoItemContainer, checkbox, todoText, deleteButton, deleteIcon, hr;
     const todoItemId = `todo-item-${todoItem.index}`;
+  
+    todoItemContainer = document.createElement('div');
+    todoItemContainer.classList.add('todo-item-container');
     todoItemContainer.id = todoItemId;
     todosContainer.appendChild(todoItemContainer);
-
-    const checkbox = document.createElement('input');
+  
+    checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = 'todo-checkbox';
     checkbox.checked = todoItem.completed;
     todoItemContainer.prepend(checkbox);
-
-    const todoText = document.createElement('p');
+  
+    todoText = document.createElement('p');
     todoText.id = 'todo-text';
     todoText.innerText = todoItem.text;
     todoItemContainer.appendChild(todoText);
-
+  
     todoText.addEventListener('click', () => {
       todoText.contentEditable = true;
       todoText.focus();
     });
-
+  
     todoText.addEventListener('blur', () => {
       todoText.contentEditable = false;
       todoItem.text = todoText.innerText;
       saveTodosToLocalStorage();
     });
-
-    const deleteButton = document.createElement('button');
+  
+    deleteButton = document.createElement('button');
     deleteButton.id = 'delete-button';
-    const deleteIcon = document.createElement('i');
+    deleteIcon = document.createElement('i');
     deleteIcon.classList.add('fas', 'fa-trash');
     deleteButton.appendChild(deleteIcon);
     todoItemContainer.appendChild(deleteButton);
-
+  
     deleteButton.addEventListener('click', () => {
       const parent = deleteButton.parentElement;
       parent.parentElement.removeChild(parent);
       removeHorizontalLine(todoItemId);
-
+  
       todos = todos.filter((item) => item.index !== todoItem.index);
-
+  
       todos.forEach((item, index) => {
         item.index = index + 1;
         const itemId = `todo-item-${item.index}`;
@@ -82,25 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
           const todoText = todoItemContainer.querySelector('#todo-text');
           const hrId = `${itemId}-hr`;
           const horizontalLine = document.getElementById(hrId);
-          todoItemContainer.id = `todo-item-${item.index}`;
+          todoItemContainer.id = itemId;
           todoText.id = 'todo-text';
           horizontalLine.id = `${itemId}-hr`;
         }
       });
-
+  
       saveTodosToLocalStorage();
     });
-
+  
     checkbox.addEventListener('change', () => {
       todoItem.completed = checkbox.checked;
       updateStatus(todoItem.index, checkbox.checked);
       saveTodosToLocalStorage();
     });
-
-    const hr = document.createElement('hr');
+  
+    hr = document.createElement('hr');
     hr.id = `${todoItemId}-hr`;
     todosContainer.appendChild(hr);
   }
+  
 
   function removeHorizontalLine(todoItemId) {
     const hrId = `${todoItemId}-hr`;

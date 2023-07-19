@@ -50,7 +50,7 @@ h2 {
   justify-content: center;
   gap: 1rem;
   font-size: 0.9rem;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', sans-serif;
   width: 100%;
   background-color: rgb(137, 247, 104);
   height: 50px;
