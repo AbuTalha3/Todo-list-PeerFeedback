@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import './style.css';
-import { updateStatus, clearCompleted } from '../modules/todosstatus.js';
+import { updateStatus, clearCompleted } from '../modules/todo.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const textInputField = document.querySelector('#text-input-field');
   const addButton = document.querySelector('#add-button');
